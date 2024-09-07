@@ -6,7 +6,7 @@ const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const MONGODB_URI = 'mongodb+srv://shivkamp:niggesh@cluster0.gxq4s.mongodb.net/';
+const MONGODB_URI = 'your-url-mongo';
 
 // Connect to MongoDB
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
