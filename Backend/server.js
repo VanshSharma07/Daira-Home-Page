@@ -3,13 +3,15 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+const childRoutes = require('./routes/childRoutes');  // New routes
+const testRoutes = require('./routes/testRoutes');    // New routes
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const MONGODB_URI = 'your-url-mongo';
+const MONGODB_URI = 'mongodb+srv://shivkamp:niggesh@cluster0.gxq4s.mongodb.net/';
 
 // Connect to MongoDB
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(MONGODB_URI);
 mongoose.connection.once('open', () => console.log('Connected to MongoDB'));
 
 // Enable CORS
@@ -24,7 +26,9 @@ app.use(express.json());
 
 // Use routes
 app.use('/', authRoutes);
-app.use('/', userRoutes); // Make sure userRoutes are correctly added
+app.use('/', userRoutes);
+app.use('/', childRoutes); // Added child routes
+app.use('/', testRoutes);  // Added test routes
 
 // Start server
 app.listen(PORT, () => {
