@@ -8,3 +8,4 @@ const childSchema = new mongoose.Schema({
 }, { collection: 'Children' });
 
 module.exports = mongoose.model('Child', childSchema);
+

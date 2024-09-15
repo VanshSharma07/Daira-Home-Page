@@ -1,7 +1,9 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const JWT_SECRET = 'kampani'; // Correct the secret spelling if necessary
+require('dotenv').config();
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Register user
 exports.register = async (req, res) => {
@@ -18,7 +20,6 @@ exports.register = async (req, res) => {
 
         // Generate token without expiry
         const token = jwt.sign({ userId: newUser._id }, JWT_SECRET);
-        console.log(JWT_SECRET)
         res.status(201).json({ message: 'User registered successfully', token });
     } catch (error) {
         res.status(500).json({ message: 'Server error', error });

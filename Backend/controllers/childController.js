@@ -13,7 +13,7 @@ exports.addChild = async (req, res) => {
             teacher_id: teacherId
         });
         await child.save();
-        res.status(201).json({ message: 'Child added successfully'});
+        res.status(201).json({ message: 'Child added successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Server error', error });
     }
@@ -21,7 +21,7 @@ exports.addChild = async (req, res) => {
 
 // Get a specific child with the number of tests taken
 exports.getChild = async (req, res) => {
-    const { name, rollno} = req.body; // Extract both rollno and name from the request body
+    const { name, rollno } = req.body; // Extract both rollno and name from the request body
 
     try {
         // Find the child based on both roll number and name
@@ -41,6 +41,16 @@ exports.getChildrenByTeacher = async (req, res) => {
 
     try {
         const children = await Child.find({ teacher_id: teacherId });
+        res.status(200).json({ children });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error });
+    }
+};
+
+// Get all children in the database
+exports.getAllChildren = async (req, res) => {
+    try {
+        const children = await Child.find(); // Fetch all children from the database
         res.status(200).json({ children });
     } catch (error) {
         res.status(500).json({ message: 'Server error', error });

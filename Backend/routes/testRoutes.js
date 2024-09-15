@@ -1,13 +1,15 @@
 const express = require('express');
-const { addTest, getTestsByChild } = require('../controllers/testController');
+const { getAllTests, addTest, getTestsByChild } = require('../controllers/testController');
 const { verifyToken } = require('../middlewares/authMiddleware');
-
 const router = express.Router();
 
-// Add a test for a child
+// Route to get all tests
+router.get('/getAllTests', getAllTests);
+
+// Route to add a test
 router.post('/addTest', verifyToken, addTest);
 
-// Get all tests for a specific child
+// Route to get tests by child ID
 router.get('/getTestsByChild/:childId', verifyToken, getTestsByChild);
 
 module.exports = router;

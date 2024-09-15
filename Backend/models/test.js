@@ -8,3 +8,4 @@ const testSchema = new mongoose.Schema({
 }, { collection: 'Tests' });
 
 module.exports = mongoose.model('Test', testSchema);
+
