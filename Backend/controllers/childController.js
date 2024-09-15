@@ -47,12 +47,4 @@ exports.getChildrenByTeacher = async (req, res) => {
     }
 };
 
-// Get all children in the database
-exports.getAllChildren = async (req, res) => {
-    try {
-        const children = await Child.find(); // Fetch all children from the database
-        res.status(200).json({ children });
-    } catch (error) {
-        res.status(500).json({ message: 'Server error', error });
-    }
-};
+

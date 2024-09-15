@@ -37,11 +37,4 @@ exports.getTestsByChild = async (req, res) => {
     }
 };
 
-exports.getAllTests = async (req, res) => {
-    try {
-      const tests = await Test.find(); // Fetch all tests from the database
-      res.json(tests); // Send the tests back as a JSON response
-    } catch (error) {
-      res.status(500).json({ message: 'Error fetching tests', error });
-    }
-  };
+
